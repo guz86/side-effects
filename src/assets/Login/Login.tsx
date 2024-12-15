@@ -17,12 +17,16 @@ export const Login = () => {
 
   function emailChangeHandler(event: ChangeEvent<HTMLInputElement>): void {
     setEmail(event.target.value);
-    setFormatIsValid(email.trim().includes('@') && password.trim().length > 5);
+    setFormatIsValid(
+      event.target.value.trim().includes('@') && password.trim().length > 5
+    );
   }
 
   function passwordChangeHandler(event: ChangeEvent<HTMLInputElement>): void {
     setPassword(event.target.value);
-    setFormatIsValid(email.trim().includes('@') && password.trim().length > 5);
+    setFormatIsValid(
+      email.trim().includes('@') && event.target.value.trim().length > 5
+    );
   }
 
   function validateEmailHandler() {
