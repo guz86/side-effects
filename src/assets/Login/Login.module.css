@@ -54,6 +54,13 @@ button {
   width: 100%;
 }
 
+.button:disabled {
+  background-color: #616161;
+  border-color: #3f3f3f;
+  cursor: not-allowed;
+  color: #3f3f3f;
+}
+
 button:hover {
   background-color: #6e6e6e;
 }
@@ -62,8 +69,14 @@ button:active {
   background-color: #949494;
 }
 
-.error {
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
+.invalid {
+  border-color: #f5c6cb;
+}
+
+.invalid input {
+  border-color: #dc3545;
+}
+
+.invalid label {
+  color: #dc3545;
 }
