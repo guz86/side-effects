@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useReducer, useCallback } from 'react';
 import styles from './Login.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../store/AuthContext';
+import { Input } from '../Input/Input';
 
 interface FieldState {
   value: string;
@@ -116,7 +117,15 @@ export const Login = () => {
 
   return (
     <form onSubmit={submitHandler} className={styles.form}>
-      <div
+      <Input
+        state={emailState}
+        id="email"
+        label="Email"
+        type="email"
+        inputChangeHandler={emailChangeHandler}
+        validateInputHandler={validateEmailHandler}
+      />
+      {/* <div
         className={`${styles.div} ${
           emailState.touched && !emailState.isValid ? styles.invalid : ''
         }`}
@@ -134,8 +143,8 @@ export const Login = () => {
           onBlur={validateEmailHandler}
           required
         />
-      </div>
-      <div
+      </div> */}
+      {/* <div
         className={`${styles.div} ${
           passwordState.touched && !passwordState.isValid ? styles.invalid : ''
         }`}
@@ -153,7 +162,16 @@ export const Login = () => {
           onBlur={validatePasswordHandler}
           required
         />
-      </div>
+      </div> */}
+      <Input
+        state={passwordState}
+        id="password"
+        label="Password"
+        type="password"
+        inputChangeHandler={passwordChangeHandler}
+        validateInputHandler={validatePasswordHandler}
+      />
+
       <button type="submit" disabled={!formIsValid} className={styles.button}>
         Login
       </button>
