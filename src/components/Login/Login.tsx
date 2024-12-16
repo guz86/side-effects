@@ -1,5 +1,7 @@
 import { ChangeEvent, FormEvent, useReducer, useCallback } from 'react';
 import styles from './Login.module.css';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../store/AuthContext';
 
 interface FieldState {
   value: string;
@@ -61,6 +63,9 @@ const passwordReducer = (
 };
 
 export const Login = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
   const [emailState, dispatchEmailState] = useReducer(emailReducer, {
     value: '',
     isValid: false,
@@ -105,6 +110,8 @@ export const Login = () => {
       email: emailState.value,
       password: passwordState.value,
     });
+    login();
+    navigate('/');
   };
 
   return (
